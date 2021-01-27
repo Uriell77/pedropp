@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+		<head>
+				<!-- Required meta tags -->
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+				<link href="{{ url_for('static', filename='css/css/bulma.css')}}" rel="stylesheet" type="text/css">
+				<script src="{{ url_for('static', filename='js/java.js' )}}"></script>
+
+
+				<title>{% block title %}Netflix Betmar {% endblock %}</title>
+		</head>
+
+		<body class="has-background-grey-light" style="height:100%">
+				<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+						<div class="navbar-brand">
+								<a class="title" href="{{url_for('hello')}}">Netflix Betmar</a>
+								</a>
+								<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+										<span aria-hidden="true"></span>
+										<span aria-hidden="true"></span>
+										<span aria-hidden="true"></span>
+								</a>
+						</div>
+						<div id="navbarBasicExample" class="navbar-menu">
+								<div class="navbar-start">
+										<a class="navbar-item" href="{{url_for('hello')}}">
+												Home
+										</a>
+										<a class="navbar-item" href="{{url_for('rec')}}">
+												Recargas
+										</a>
+
+										<a class="navbar-item" href="{{url_for('doc')}}">
+												Documentation
+										</a>
+								</div>
+								<div class="navbar-end">
+										<div class="navbar-item">
+												<div class="buttons">
+														<a class="button is-primary" href="{{ url_for('reg') }}">
+																<strong>Sign up</strong>
+														</a>
+														<a class="button is-light" href="{{ url_for('log') }}">
+																Log in
+														</a>
+												</div>
+										</div>
+								</div>
+						</div>
+				</nav>
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<ul class=flashes>
+						{% for message in messages %}
+						<li>{{ message }}</li>
+						{% endfor %}
+				</ul>
+				{% endif %}
+				{% endwith %}
+
+
+				{% block content %}
+				{%endblock%}
+
+
+		</body>
+</html>
