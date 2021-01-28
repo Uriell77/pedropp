@@ -18,12 +18,12 @@
 										<!-- Content ... -->
 
 										<div class="container" style="width:50%; height:50%; align:center">
-												<form class="" style="align:center" id="rec">
+										<form class="" style="align:center" id="rec">
 
-														<div><label for="">Numero:<br><input type="text"></label></div>
-														<div><label for="">Monto:<br><input type="text"></label></div>
-														<div><label for="">Referencia:<br><input type="text"></label></div>
-												</form>
+												<div><label for="">Numero:<br><input type="text"></label></div>
+												<div><label for="">Monto:<br><input type="text"></label></div>
+												<div><label for="">Referencia:<br><input type="text"></label></div>
+										</form>
 										</div>
 								</section>
 								<footer class="modal-card-foot">
@@ -35,9 +35,9 @@
 		</div>
 		<br>
 		<section class="section">
-				<button id="boton1" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movilnet.png')}}"></button>
-				<button id="boton2" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movistar.png')}}"></button>
-				<button id="boton3" class="has-background-grey-light"><img src="{{url_for('static', filename='img/digitel.png')}}"></button>
+		<button id="boton1" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movilnet.png')}}"></button>
+		<button id="boton2" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movistar.png')}}"></button>
+		<button id="boton3" class="has-background-grey-light"><img src="{{url_for('static', filename='img/digitel.png')}}"></button>
 
 
 
