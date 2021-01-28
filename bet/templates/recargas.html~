@@ -36,8 +36,8 @@
 		<br>
 		<section class="section">
 				<button id="boton1" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movilnet.png')}}"></button>
-				<button id="boton2" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movistar.png')}}" width="300" height="146"></button>
-				<button id="boton3" class="has-background-grey-light"><img src="{{url_for('static', filename='img/digitel.png')}}" width="300" height="146"></button>
+				<button id="boton2" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movistar.png')}}"></button>
+				<button id="boton3" class="has-background-grey-light"><img src="{{url_for('static', filename='img/digitel.png')}}"></button>
 
 
 
