@@ -1,0 +1,3 @@
+call virtualpy\Script\activate.bat
+
+bet\run.py
