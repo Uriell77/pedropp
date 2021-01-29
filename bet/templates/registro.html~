@@ -1,10 +1,10 @@
-{% extends 'layout.html' %}
+{% extends "layout.html"%}
 {% block content %}
 <div class="collumns is-one-third is-centered">
 		<div class="collumn is-half">
-				<h1>ESTO ES UN LOGIN</h1>
-		</div>
+				<h1>Registro</h1>
 
+		</div>
 		<div class="section">
 				<div class="container">
 						<div class="columns is-centered">
@@ -13,13 +13,13 @@
 												<div class="card-content" align="center">
 														<form method="post" class="">
 
-																<label for="name">Nombre:&nbsp&nbsp</label>
+																<label for="name">Nombre:&nbsp&nbsp<label>
 																<input type="text" id="nombre" name="nombre" class="input is-primary"><br><br>
+																<label for="email">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																<input type="email" placeholder"Email" id="correo" name="correo"class="input is-primary"><br><br>
 																<label for="password">Password:</label>
 																<input type="password" id="password" name="password"class="input is-primary"><br><br>
-
-
-																<input type="submit" value="Entrar"class="button is-primary"></input>
+																<input type="submit" value="Registrar" class="button is-primary"></input>
 																<input type="submit" value="Cancelar"class="button is-primary"></input>
 
 														</form>
@@ -29,5 +29,5 @@
 						</div>
 				</div>
 		</div>
-
 		{% endblock %}
+

@@ -19,8 +19,8 @@
 																<input type="password" id="password" name="password"class="input is-primary"><br><br>
 
 
-																<input type="submit" value="Entrar"class="button is-primary"></input>
-																<input type="submit" value="Cancelar"class="button is-primary"></input>
+																<input type="submit" value="Entrar"></input>
+																<input type="submit" value="Cancelar"></input>
 
 														</form>
 												</div>
