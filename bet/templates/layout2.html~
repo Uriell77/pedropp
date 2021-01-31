@@ -5,8 +5,8 @@
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 				<link href="{{ url_for('static', filename='css/css/bulma.css')}}" rel="stylesheet" type="text/css">
+				<meta property="og:image" itemprop="image" content="https://domain_name/path_to_image">
 				<script src="{{ url_for('static', filename='js/java.js' )}}"></script>
-
 
 				<title>{% block title %}Netflix Betmar {% endblock %}</title>
 		</head>
