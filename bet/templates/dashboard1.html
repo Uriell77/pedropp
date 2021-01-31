@@ -13,29 +13,29 @@
 {% set num = (plantilla| length)%}
 <div class="container" style="width:20%">
 
-<div class="card">Total de Usuarios: {{ num }} </div>
+		<div class="card">Total de Usuarios: {{ num }} </div>
 </div>
 
 
 <section class="section">
-				<div class="table-container">
-						<table class="table is-bordered is-hoverable" style="text-align:center">
-								<tr>
-										<th>Id</th>
-										<th>Nombre</th>
-										<th>Correo</th>
+		<div class="table-container">
+				<table class="table is-bordered is-hoverable" style="text-align:center">
+						<tr>
+								<th>Id</th>
+								<th>Nombre</th>
+								<th>Correo</th>
 
-								</tr>
-								{% for user in plantilla %}
-								<tr>
-										{% for dat in user[:-1] %}
-										<td>{{ dat }}</td>
-										{% endfor %}
-								</tr>
+						</tr>
+						{% for user in plantilla %}
+						<tr>
+								{% for dat in user[:-1] %}
+								<td>{{ dat }}</td>
 								{% endfor %}
-						</table>
+						</tr>
+						{% endfor %}
+				</table>
 
-				</div>
+		</div>
 </section>
 
 

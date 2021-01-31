@@ -11,7 +11,7 @@
 
 </div>
 {% set num = (plantilla| length)%}
-<div class="container" style="width:20%; content_align:left">
+<div class="container" style="width:20%">
 
 <div class="card">Total de Usuarios: {{ num }} </div>
 </div>
