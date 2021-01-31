@@ -4,6 +4,9 @@
 				<!-- Required meta tags -->
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+				<meta property="og:image" itemprop="image" content="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
+
+				<link rel="icon" href="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
 				<link href="{{ url_for('static', filename='css/css/bulma.css')}}" rel="stylesheet" type="text/css">
 				<script src="{{ url_for('static', filename='js/java.js' )}}"></script>
 
@@ -14,7 +17,7 @@
 		<body class="has-background-grey-light" style="height:100%">
 				<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 						<div class="navbar-brand">
-								<a class="title" href="{{url_for('hello')}}">Netflix Betmar</a>
+								<a class="title" href="">Netflix Betmar</a>
 								</a>
 								<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 										<span aria-hidden="true"></span>
@@ -25,6 +28,19 @@
 						<div id="navbarBasicExample" class="navbar-menu">
 								<div class="navbar-start">
 										
+										{% if user == 'admin' %}
+										{% set panel = 'layad' %}
+										{% else %}
+										{% set panel = 'dash' %}
+										{% endif %}
+
+										<a class="navbar-item" href="{{url_for(panel, user=user)}}">
+												Panel de Control
+										</a>
+										<a class="navbar-item" href="{{url_for('rec', user=user)}}">
+												Recargas
+										</a>
+
 								</div>
 								<div class="navbar-end">
 										<div class="navbar-item">
@@ -52,5 +68,5 @@
 				{%endblock%}
 
 
-		</body>
+						</body>
 </html>

@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout1.html" %}
 
 {%block content %}
 
@@ -37,7 +37,7 @@
 		<section class="section">
 				<div class="columns">
 						<div class="column">
-								<button id="boton1" class="button has-background-grey-light"><img src="{{url_for('static', filename='img/movilnet.png')}}"></button></div>
+								<button id="boton1" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movilnet.png')}}"></button></div>
 						<div class="column">
 								<button id="boton2" class="has-background-grey-light"><img src="{{url_for('static', filename='img/movistar.png')}}"></button></div>
 						<div class="column">
