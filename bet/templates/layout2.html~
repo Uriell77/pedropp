@@ -10,7 +10,7 @@
 				<title>{% block title %}Netflix Betmar {% endblock %}</title>
 		</head>
 
-		<body class="has-background-grey-light" style="height:100%">
+		<body class="has-background-grey-light" style="height:100%" style="padding:1px">
 				<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 						<div class="navbar-brand">
 								<a class="title" href="">Netflix Betmar</a>
@@ -54,5 +54,5 @@
 				{%endblock%}
 
 
-						</body>
+		</body>
 </html>

@@ -3,41 +3,60 @@
 
 {% block content %}
 
-<div class="collumns is-one-third">
-		<div class="collumn">
+<div class="columns">
+		<div class="column">
 				<h1>Esto es un dashboard de administracion <strong>{{user}}</strong></h1>
 
 		</div>
 
-</div>
+
 {% set num = (plantilla| length)%}
-<div class="container" style="width:20%">
-
-		<div class="card">Total de Usuarios: {{ num }} </div>
+<div class="column">
+<div class="box">Total de Clientes: {{ num }} </div>
+</div>
+<div class="column">
+<div class="box">Conectados: {{ num }} </div>
+</div>
+<div class="column">
+<div class="box">Activos: {{ num }} </div>
+</div>
+<div class="column">
+<div class="box">Inactivos: {{ num }} </div>
+</div>
 </div>
 
+<div class="columns">
+		<div class="column is-7">
+				<div class="box"><strong>Clientes:</strong>
+						<div class="table-container" style="height:400px; overflow-y:scroll; ">
+								<table class="table is-bordered is-fullwidth is-hoverable is-narrower" style="text-align:center">
+										<thead class="thead ">
+												<tr>
+														<th>Id</th>
+														<th>Nombre</th>
+														<th>Correo</th>
 
-<section class="section">
-		<div class="table-container">
-				<table class="table is-bordered is-hoverable" style="text-align:center">
-						<tr>
-								<th>Id</th>
-								<th>Nombre</th>
-								<th>Correo</th>
+												</tr>
+										</thead>
+										<tbody class="">	
+												{% for user in plantilla %}
+												<tr class="">
+														{% for dat in user[:-1] %}
+														<td>{{ dat }}</td>
+														{% endfor %}
+												</tr>
+										</tbody>
 
-						</tr>
-						{% for user in plantilla %}
-						<tr>
-								{% for dat in user[:-1] %}
-								<td>{{ dat }}</td>
-								{% endfor %}
-						</tr>
-						{% endfor %}
-				</table>
-
+										{% endfor %}
+								</table>
+						</div>
+				</div>
 		</div>
-</section>
 
-
-
+		<div class="column is-5">
+				<div class="box"><strong>Ordenes:</strong>
+						<!--Aqui van las ordenes creadas por los usuarios-->
+				</div>
+		</div>
+</div>
 {% endblock %}

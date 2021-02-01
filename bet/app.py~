@@ -89,10 +89,10 @@ def dash(user):
     return render_template('dashboard.html', user=user)
 
 
-
-@app.route('/recargas', methods=['GET', 'POST'])
+#@app.route('/recargas/<user>', methods=['POST'])
+@app.route('/recargas', methods=['POST'])
 def rec():
-    return render_template('recargas.html')
+    return render_template('recargas.html', user=user)
 
 
 

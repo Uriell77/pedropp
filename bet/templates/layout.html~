@@ -7,9 +7,9 @@
 				<meta property="og:title" content="Netflix Betmar"/>
 				<meta property="og:url" content="http://uriell77.pythonanywhere.com/"/>
 				<meta property="og:image" itemprop="image" content="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
-				<meta property="og:description" content="Pagina de Netflix Betmar"/>
-				<meta property="og:type" content="http://uriell77.pythonanywhere.com/"/>
-				<meta property="fb:10222177988131561" content="http://uriell77.pythonanywhere.com/">
+				<meta property="og:description" content="Pagina de Netflix Betmar recargas moviles"/>
+				<meta property="og:type" content="Negocio"/>
+				
 
 				<link rel="icon" href="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
 				<link href="{{ url_for('static', filename='css/css/bulma.css')}}" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
 				<title>{% block title %}Netflix Betmar {% endblock %}</title>
 		</head>
 
-		<body class="has-background-grey-light" height="100%">
+		<body class="has-background-grey-light" height="100%" style="padding:1px">
 				<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 						<div class="navbar-brand">
 								<a class="title" href="{{url_for('hello')}}">Netflix Betmar</a>

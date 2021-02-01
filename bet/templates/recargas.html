@@ -8,7 +8,7 @@
 		<!-- ventana emergente para recargas-->
 		<div class="container is-clipped">
 				<div class="modal" id="modal1">
-						<div class="modal-background"></div>
+						<div class="modal-background" id="modalback"></div>
 						<div class="modal-card">
 								<header class="modal-card-head">
 										<p class="modal-card-title">Recargas</p>
@@ -18,17 +18,19 @@
 										<!-- Content ... -->
 
 										<div class="container" style="width:50%; height:50%; align:center">
-												<form class="" style="align:center" id="rec">
+												<form class="form" style="align:center" id="rec">
+														<div class="block">
 
-														<div><label for="">Numero:<br><input type="text"></label></div>
-														<div><label for="">Monto:<br><input type="text"></label></div>
-														<div><label for="">Referencia:<br><input type="text"></label></div>
+														<div><label class="label" for="">Numero:<br><input class="input is-primary" type="text"></label></div>
+														<div><label class="label" for="">Monto:<br><input class="input is-primary" type="text"></label></div>
+														<div><label class="label" for="">Referencia:<br><input class="input is-primary" type="text"></label></div>
+														</div>
 												</form>
 										</div>
 								</section>
 								<footer class="modal-card-foot">
 										<button class="button is-success" formmethod="get" formtarget="_top" form="rec">Recargar</button>
-										<button class="button" id="del">Cancelar</button>
+										<button class="button" id="cancel">Cancelar</button>
 								</footer>
 						</div>
 				</div>	
