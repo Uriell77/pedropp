@@ -34,7 +34,7 @@
 				<div class="container" align="center">
 								<article class="media">
 										<div class="media-content">
-										<figure class="image is-square">
+										<figure class="image is-1by1">
 												<img src="{{url_for('static', filename="img/ahahah.gif")}}">
 										</figure>
 										</div>
