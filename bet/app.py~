@@ -6,7 +6,7 @@
 
 
 
-from flask import Flask, escape, request, render_template, url_for, redirect, flash
+from flask import Flask, escape, request, render_template, url_for, redirect, flash, session
 import flask_wtf as wtf
 from flask_sqlalchemy import SQLAlchemy
 import bd
@@ -14,6 +14,11 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
+
+
+@app.before_request
+def session_manager():
+    session.permanent = True
 
 
 @app.route('/')
@@ -35,15 +40,22 @@ def log():
     if request.method == 'POST':
         nombre = request.form['nombre']
         password = request.form['password']
+        
+        session.clear()
+        session['name'] = nombre
+        session['auth'] = 0
+        
         if nombre =="" or password =="":
             flash("No hay datos")
             return render_template('login.html')
         else:
             datos = (nombre, password)
             if nombre=="admin" and password == "nimda":
+                session['auth'] = 1
                 return redirect(url_for('layad', user=nombre))
             try:
                 if bd.existe(datos):
+                    session['auth'] = 1
                     flash("te haz logeado correctamente")
                     return redirect(url_for('dash', user=nombre))
                 else:
@@ -84,14 +96,17 @@ def reg():
 
 @app.route('/dashboard/<user>',  methods=['GET', 'POST'])
 def dash(user):
-    #enrutado a dashboard
-    flash('Bienvenido')
-    return render_template('dashboard.html', user=user)
+    if session['auth'] == 1 and session['name'] == user:
+        #enrutado a dashboard
+        flash('Bienvenido')
+        return render_template('dashboard.html', user=user)
+    else:
+        return "no estas logeado"
 
 
-#@app.route('/recargas/<user>', methods=['POST'])
-@app.route('/recargas', methods=['POST'])
-def rec():
+@app.route('/recargas/<user>', methods=['GET', 'POST'])
+@app.route('/recargas', methods=['GET', 'POST'])
+def rec(user):
     return render_template('recargas.html', user=user)
 
 
@@ -105,7 +120,17 @@ def doc():
 @app.route('/dashboard1/<user>', methods=['GET', 'POST'])
 def layad(user):
     plantilla = bd.leertodo()
-    return render_template('dashboard1.html', user=user, plantilla=plantilla)
+    if session['auth'] == 1 and session['name'] == user:
+        return render_template('dashboard1.html', user=user, plantilla=plantilla)
+    else:
+        return "no tienes acceso a esta area a menos que te logees como administrador"
 
 
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    session['name'] = 'unknown'
+    session['auth'] = 0
+    return hello()
 

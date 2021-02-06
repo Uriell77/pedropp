@@ -43,9 +43,9 @@
 								<div class="navbar-end">
 										<div class="navbar-item">
 												<!-- boton desplegable-->
-												<div class="dropdown is-right" id="desplegable">
+												<div class="dropdown is-left" id="desplegable">
 														<div class="dropdown-trigger">
-																<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+																<button class="button" style="width:12rem" aria-haspopup="true" aria-controls="dropdown-menu">
 																		<span>{{ user }}</span>
 																		<span class="icon is-small">
 																				<i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -67,7 +67,7 @@
 																				historial
 																		</a>
 																		<hr class="dropdown-divider">
-																		<a href="{{url_for('hello')}}" class="dropdown-item">
+																		<a href="{{url_for('logout')}}" class="dropdown-item">
 																				Salir
 																		</a>
 																</div>
