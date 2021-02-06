@@ -99,7 +99,7 @@ def dash(user):
     if session['auth'] == 1 and session['name'] == user:
         #enrutado a dashboard
         flash('Bienvenido')
-        return render_template('dashboard.html', user=user)
+        return render_template('dashboard.html', user=userl)
     else:
         return "no estas logeado"
 
@@ -107,7 +107,10 @@ def dash(user):
 @app.route('/recargas/<user>', methods=['GET', 'POST'])
 @app.route('/recargas', methods=['GET', 'POST'])
 def rec(user):
-    return render_template('recargas.html', user=user)
+    if session['auth'] == 1 and  session['name'] == user:
+        return render_template('recargas.html', user=user)
+    else:
+        return "usuario no esta logueado"
 
 
 

@@ -99,7 +99,7 @@ def dash(user):
     if session['auth'] == 1 and session['name'] == user:
         #enrutado a dashboard
         flash('Bienvenido')
-        return render_template('dashboard.html', user=userl)
+        return render_template('dashboard.html', user=user)
     else:
         return "no estas logeado"
 
