@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
+				<meta property="og:title" content="Netflix Betmar"/>
+				<meta property="og:url" content="http://uriell77.pythonanywhere.com/"/>
+				<meta property="og:image" itemprop="image" content="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
+				<meta property="og:description" content="Pagina de Netflix Betmar recargas moviles"/>
+				<meta property="og:type" content="Negocio"/>
+				
+
+				<link rel="icon" href="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
+				<link href="{{ url_for('static', filename='css/css/bulma.css')}}" rel="stylesheet" type="text/css">
+
+				<script src="{{ url_for('static', filename='js/java.js' )}}"></script>
+
+        <title>Fail</title>
+</head>
+<body>
+
+<article class="message is-danger">
+  <div class="message-body">
+
+		<div class="tittle">{{ error }}</div>
+		</div>
+</article>
+
+<div class="columns">
+		<div class="column is-3"></div>
+		<div class="column is-1"></div>
+
+		<div class="column is-4">
+				<div class="container" align="center">
+								<article class="media">
+										<div class="media-content">
+										<figure class="image is-square">
+												<img src="{{url_for('static', filename="img/ahahah.gif")}}">
+										</figure>
+										</div>
+								</article>
+				</div>
+		</div>
+
+		<div class="column is-1"></div>
+		<div class="column is-1"></div>
+
+</div>
+
+
+</body>
+</html>

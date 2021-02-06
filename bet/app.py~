@@ -16,6 +16,8 @@ app = Flask(__name__)
 app.secret_key="secretoenlamontana"
 
 
+fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
+
 @app.before_request
 def session_manager():
     session.permanent = True
@@ -37,6 +39,7 @@ def lay():
 @app.route('/login', methods=['GET', 'POST'])
 def log():
     #enrutado a login
+    plantilla = bd.leertodo()
     if request.method == 'POST':
         nombre = request.form['nombre']
         password = request.form['password']
@@ -50,14 +53,15 @@ def log():
             return render_template('login.html')
         else:
             datos = (nombre, password)
-            if nombre=="admin" and password == "nimda":
-                session['auth'] = 1
-                return redirect(url_for('layad', user=nombre))
             try:
                 if bd.existe(datos):
-                    session['auth'] = 1
-                    flash("te haz logeado correctamente")
-                    return redirect(url_for('dash', user=nombre))
+                    if nombre== str(plantilla[0][1]) and password == str(plantilla[0][3]):
+                        session['auth'] = 1
+                        return redirect(url_for('layad', user=nombre))
+                    else:
+                        session['auth'] = 1
+                        flash("te haz logeado correctamente")
+                        return redirect(url_for('dash', user=nombre))
                 else:
                     flash("Datos Incorrectos")
                     return redirect(url_for('log'))
@@ -96,12 +100,16 @@ def reg():
 
 @app.route('/dashboard/<user>',  methods=['GET', 'POST'])
 def dash(user):
-    if session['auth'] == 1 and session['name'] == user:
-        #enrutado a dashboard
-        flash('Bienvenido')
-        return render_template('dashboard.html', user=userl)
+    plantilla = bd.leertodo()
+    if user == plantilla[0][1]:
+        return render_template('fail.html', error=fallas['noacces'])
     else:
-        return "no estas logeado"
+        if session['auth'] == 1 and session['name'] == user:
+            #enrutado a dashboard
+            flash('Bienvenido')
+            return render_template('dashboard.html', user=user)
+        else:
+            return render_template('fail.html', error = fallas['nolog'])
 
 
 @app.route('/recargas/<user>', methods=['GET', 'POST'])
@@ -110,7 +118,7 @@ def rec(user):
     if session['auth'] == 1 and  session['name'] == user:
         return render_template('recargas.html', user=user)
     else:
-        return "usuario no esta logueado"
+        return render_template('fail.html', error=fallas['nolog'])
 
 
 
@@ -123,10 +131,13 @@ def doc():
 @app.route('/dashboard1/<user>', methods=['GET', 'POST'])
 def layad(user):
     plantilla = bd.leertodo()
-    if session['auth'] == 1 and session['name'] == user:
-        return render_template('dashboard1.html', user=user, plantilla=plantilla)
+    if user != plantilla[0][1]:
+        return render_template('fail.html', fallas['noacces'])
     else:
-        return "no tienes acceso a esta area a menos que te logees como administrador"
+        if session['auth'] == 1 and session['name'] == str(plantilla[0][1]):
+            return render_template('dashboard1.html', user=user, plantilla=plantilla)
+        else:
+            return render_template('fail.html', error=fallas['noacces'])
 
 
 
@@ -135,5 +146,10 @@ def logout():
     session.clear()
     session['name'] = 'unknown'
     session['auth'] = 0
-    return hello()
+    return redirect(url_for('hello'))
+
+
+@app.route('/fail')
+def fail(fail):
+    return render_template('fail.html', error=fail)
 
