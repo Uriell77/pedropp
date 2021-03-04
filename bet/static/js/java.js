@@ -81,3 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 
 });
+
+
+
+$('#logout').click(function(event){
+		console.log('hello')
+});

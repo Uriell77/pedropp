@@ -1,0 +1,9 @@
+.card-header{
+		background: #123467 !important;
+
+}
+
+#saldo{
+		background: #629402 !important;
+		float:left !important;
+}

@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\hermo\OneDrive\Escritorio\pedropp\virtualpy"
+set "VIRTUAL_ENV=C:\Users\hermo\Develop\pedropp\virtualpy"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

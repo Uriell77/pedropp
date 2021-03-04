@@ -28,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"C:\Users\hermo\OneDrive\Escritorio\pedropp\virtualpy"
+$VIRTUAL_ENV = r"C:\Users\hermo\Develop\pedropp\virtualpy"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]

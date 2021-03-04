@@ -1,3 +1,3 @@
-call virtualpy\Script\activate.bat
+call virtualpy\Scripts\activate.bat
 cd bet\
-run.py
+python run.py

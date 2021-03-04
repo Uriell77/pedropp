@@ -6,15 +6,18 @@
 
 
 
-from flask import Flask, escape, request, render_template, url_for, redirect, flash, session
+from flask import Flask, escape, request, render_template, url_for, redirect, flash, session, jsonify
 import flask_wtf as wtf
 from flask_sqlalchemy import SQLAlchemy
 import bd
 import sqlite3
+import flask_socketio as soc
+import json as j
 
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
-
+app.config.update(SESSION_COOKIE_SAMESITE='lax')
+socket = soc.SocketIO(app)
 
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
 
@@ -43,7 +46,7 @@ def log():
     if request.method == 'POST':
         nombre = request.form['nombre']
         password = request.form['password']
-        
+
         session.clear()
         session['name'] = nombre
         session['auth'] = 0
@@ -61,6 +64,7 @@ def log():
                     else:
                         session['auth'] = 1
                         flash("te haz logeado correctamente")
+                        bd.log(nombre)
                         return redirect(url_for('dash', user=nombre))
                 else:
                     flash("Datos Incorrectos")
@@ -130,12 +134,14 @@ def doc():
 
 @app.route('/dashboard1/<user>', methods=['GET', 'POST'])
 def layad(user):
+    cuenta = bd.counteo()
     plantilla = bd.leertodo()
     if user != plantilla[0][1]:
-        return render_template('fail.html', fallas['noacces'])
+        return render_template('fail.html', error=fallas['noacces'])
     else:
         if session['auth'] == 1 and session['name'] == str(plantilla[0][1]):
-            return render_template('dashboard1.html', user=user, plantilla=plantilla)
+
+            return render_template('dashboard1.html', user=user, plantilla=plantilla, cuenta=cuenta)
         else:
             return render_template('fail.html', error=fallas['noacces'])
 
@@ -143,9 +149,11 @@ def layad(user):
 
 @app.route('/logout')
 def logout():
+    bd.logout(session['name'])
     session.clear()
     session['name'] = 'unknown'
     session['auth'] = 0
+    cuenta = bd.counteo
     return redirect(url_for('hello'))
 
 
@@ -153,3 +161,21 @@ def logout():
 def fail(fail):
     return render_template('fail.html', error=fail)
 
+
+
+@socket.on('message')#inicio la escucha
+def sockete(msg): #funcion recibe el dato que sera el mensaje
+    print(msg
+    if msg== 'hola server':
+        cuenta = bd.counteo()
+        plantilla = bd.leertodo()
+        plantilla.append(cuenta)
+        plantilla = tuple(plantilla)
+        socket.send('hola cliente') #envio respuesta
+        cuenta = j.dumps(plantilla) #convierto a json
+        #print(cuenta)
+        socket.send(cuenta) #envio
+
+
+if __name__ == '__main__':
+    socket.run(app, host='0.0.0.0', debug=1)

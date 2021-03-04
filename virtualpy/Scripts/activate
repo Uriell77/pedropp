@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'C:\Users\hermo\OneDrive\Escritorio\pedropp\virtualpy'; else echo '/C/Users/hermo/OneDrive/Escritorio/pedropp/virtualpy'; fi;)"
+VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'C:\Users\hermo\Develop\pedropp\virtualpy'; else echo '/C/Users/hermo/Develop/pedropp/virtualpy'; fi;)"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
