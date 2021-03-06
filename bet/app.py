@@ -154,7 +154,7 @@ def logout():
     session.clear()
     session['name'] = 'unknown'
     session['auth'] = 0
-    cuenta = bd.counteo
+    cuenta = bd.counteo()
     return redirect(url_for('hello'))
 
 
