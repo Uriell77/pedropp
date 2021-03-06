@@ -66,7 +66,7 @@ def log():
                         session['auth'] = 1
                         flash("te haz logeado correctamente")
                         bd.log(nombre)
-                        return render_template('dashboard.html', user=nombre))
+                        return redirect(url_for('dash', user=nombre))
                 else:
                     flash("Datos Incorrectos")
                     return redirect(url_for('log'))
