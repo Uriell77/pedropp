@@ -24,6 +24,7 @@ def leertodo():
     #returna toda la bd
     cursor.execute("SELECT * FROM usuarios")
     respuesta = cursor.fetchall()
+    cursor.close()
     return respuesta
 
 
@@ -61,11 +62,11 @@ def logout(dato):
     #parametro dato es el nombre
     datos = leer(dato)
     datos = list(datos)
-    print(datos)
+    #print(datos)
     datos[4] = 'Desconectado'
-    print(datos)
+    #print(datos)
     datos = tuple(datos)
-    print(datos)
+    #print(datos)
     editar(datos[0], datos)
     
     
