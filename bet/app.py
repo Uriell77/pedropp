@@ -42,7 +42,7 @@ def lay():
 @app.route('/login', methods=['GET', 'POST'])
 def log():
     #enrutado a login
-    plantilla = bd.leertodo()
+
     if request.method == 'POST':
         nombre = request.form['nombre']
         password = request.form['password']
@@ -58,6 +58,7 @@ def log():
             datos = (nombre, password)
             try:
                 if bd.existe(datos):
+                    plantilla = bd.leertodo()
                     if nombre== str(plantilla[0][1]) and password == str(plantilla[0][3]):
                         session['auth'] = 1
                         return redirect(url_for('layad', user=nombre))
