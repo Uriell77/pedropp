@@ -49,11 +49,11 @@ def log(dato):
     #parametro dato es el nombre
     datos = leer(dato)
     datos = list(datos)
-    print(datos)
+    #print(datos)
     datos[4] = 'Conectado'
-    print(datos)
+    #print(datos)
     datos = tuple(datos)
-    print(datos)
+    #print(datos)
     editar(datos[0], datos)
 
 
@@ -61,11 +61,11 @@ def logout(dato):
     #parametro dato es el nombre
     datos = leer(dato)
     datos = list(datos)
-    print(datos)
+    #print(datos)
     datos[4] = 'Desconectado'
-    print(datos)
+    #print(datos)
     datos = tuple(datos)
-    print(datos)
+    #print(datos)
     editar(datos[0], datos)
     
     
