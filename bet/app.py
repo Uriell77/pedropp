@@ -17,7 +17,7 @@ import json as j
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
 app.config.update(SESSION_COOKIE_SAMESITE=None)
-app.config(SESSION_SECURE=True)
+app.config.update(SESSION_SECURE=True)
 socket = soc.SocketIO(app)
 
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
