@@ -109,12 +109,12 @@ def dash(user):
     if user == plantilla[0][1]:
         return render_template('fail.html', error=fallas['noacces'])
     else:
-        if session['auth'] == 1 and session['name'] == user:
+        #if session['auth'] == 1 and session['name'] == user:
             #enrutado a dashboard
             flash('Bienvenido')
             return render_template('dashboard.html', user=user)
-        else:
-            return render_template('fail.html', error = fallas['nolog'])
+       # else:
+          #  return render_template('fail.html', error = fallas['nolog'])
 
 
 @app.route('/recargas/<user>', methods=['GET', 'POST'])
@@ -150,11 +150,12 @@ def layad(user):
 
 @app.route('/logout')
 def logout():
+    #print(session['name'])
     bd.logout(session['name'])
     session.clear()
     session['name'] = 'unknown'
     session['auth'] = 0
-    cuenta = bd.counteo()
+    #cuenta = bd.counteo()
     return redirect(url_for('hello'))
 
 
