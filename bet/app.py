@@ -65,6 +65,7 @@ def log():
                     else:
                         session['auth'] = 1
                         flash("te haz logeado correctamente")
+                        print(nombre)
                         bd.log(nombre)
                         return redirect(url_for('dash', user=nombre))
                 else:
@@ -111,10 +112,10 @@ def dash(user):
     else:
         #if session['auth'] == 1 and session['name'] == user:
             #enrutado a dashboard
-            flash('Bienvenido')
-            return render_template('dashboard.html', user=user)
-       # else:
-          #  return render_template('fail.html', error = fallas['nolog'])
+        flash('Bienvenido')
+        return render_template('dashboard.html', user=user)
+        #else:
+         #return render_template('fail.html', error = fallas['nolog'])
 
 
 @app.route('/recargas/<user>', methods=['GET', 'POST'])
@@ -150,12 +151,12 @@ def layad(user):
 
 @app.route('/logout')
 def logout():
-    #print(session['name'])
+    print(session['name'])
     bd.logout(session['name'])
     session.clear()
     session['name'] = 'unknown'
     session['auth'] = 0
-    #cuenta = bd.counteo()
+    cuenta = bd.counteo()
     return redirect(url_for('hello'))
 
 
