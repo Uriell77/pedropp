@@ -4,6 +4,8 @@
 				<!-- Required meta tags -->
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
+				<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+				<meta content="utf-8" http-equiv="encoding">
 				<meta property="og:title" content="Netflix Betmar"/>
 				<meta property="og:url" content="http://uriell77.pythonanywhere.com/"/>
 				<meta property="og:image" itemprop="image" content="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
@@ -54,13 +56,14 @@
 								</div>
 						</div>
 				</nav>
-				{% with messages = get_flashed_messages() %}
-				{% if messages %}
-				<ul class=flashes>
+				<article class="message is-secondary">
+					{% with messages = get_flashed_messages() %}
+						{% if messages %}
+
 						{% for message in messages %}
-						<li>{{ message }}</li>
+						<div class="massage-body"><div id="bienvenida">{{ message }} que mierc</div></div>
 						{% endfor %}
-				</ul>
+				</article>
 				{% endif %}
 				{% endwith %}
 
@@ -68,6 +71,14 @@
 				{% block content %}
 				{%endblock%}
 
+				<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+				<!--<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>-->
+				<script>
+						function deli(){
+								$("#bienvenida").delay(500).html("")
+						};
+						deli();
+				</script>
 
 		</body>
 </html>

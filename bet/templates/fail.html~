@@ -19,10 +19,10 @@
 </head>
 <body>
 
-<article class="message is-danger">
+<article class="message is-danger" style="position:"absolute"">
   <div class="message-body">
 
-		<div class="tittle">{{ error }}</div>
+		  <strong><div class="tittle">{{ error }}</div></strong>
 		</div>
 </article>
 

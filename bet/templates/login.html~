@@ -13,9 +13,9 @@
 												<div class="card-content" align="center">
 														<form method="post" class="">
 
-																<label for="name">Nombre:&nbsp&nbsp</label>
+																<label class="label" for="name">Nombre:&nbsp&nbsp</label>
 																<input type="text" id="nombre" name="nombre" class="input is-primary"><br><br>
-																<label for="password">Password:</label>
+																<label class="label" for="password">Password:</label>
 																<input type="password" id="password" name="password"class="input is-primary"><br><br>
 
 

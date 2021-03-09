@@ -7,7 +7,7 @@
 
 <div class="columns">
 		<div class="column">
-				<h1>Esto es un dashboard de administracion <strong id="cool">{{user}}</strong></h1>
+				<!--<h1>Esto es un dashboard de administracion <strong id="cool">{{user}}</strong></h1>-->
 
 		</div>
 </div>
@@ -16,16 +16,16 @@
 		<div class="column is-7">
 				<div class="box">
 						<div class="tags has-addons">
-								<div class="tag is-primary" id="total">Total de Clientes: {{ cuenta[0] }}</div>
+								<div class="tag is-primary">Total de Clientes: <div id="total">{{ cuenta[0] }}</div></div>
 								<i class="fas fa-fw">&nbsp</i>
-								<div class="tag is-link" id="conect">Conectados: {{ cuenta[1] }}</div>
-								<div class="tag is-link" id="desc">Desconectados: {{ cuenta[2] }}</div>
+								<div class="tag is-link">Conectados: <div id="conect">{{ cuenta[1] }}</div></div>
+								<div class="tag is-link">Desconectados: <div id="desc">{{ cuenta[2] }}</div></div>
 								<i class="fas fa-fw">&nbsp</i>
-								<div class="tag is-link" id="activ">Activos: {{ cuenta[3] }}</div>
-								<div class="tag is-link" id="inact">Inactivos: {{ cuenta[4] }}</div>
+								<div class="tag is-link">Activos: <div id="activ">{{ cuenta[3] }}</div></div>
+								<div class="tag is-link">Inactivos: <div id="inact">{{ cuenta[4] }}</div></div>
 								<i class="fas fa-fw">&nbsp</i>
-								<div class="tag is-link" id="aldia">Al Dia: {{ cuenta[5] }}</div>
-								<div class="tag is-link" id="moros">Morosos: {{ cuenta[6] }}</div>
+								<div class="tag is-link">Al Dia: <div id="aldia">{{ cuenta[5] }}</div></div>
+								<div class="tag is-link">Morosos: <div id="moros">{{ cuenta[6] }}</div></div>
 
 
 						</div>
@@ -87,17 +87,17 @@
 										msg = JSON.parse(msg)
 										console.log(msg[1][1]);
 										var tam = msg.length -1
-										$('#total').html('Total de Clientes: '+ msg[tam][0]);
-										$('#conect').html('Conectados: '+ msg[tam][1]);
-										$('#desc').html('Desconectados: '+ msg[tam][2]);
-										$('#activ').html('Activos: '+ msg[tam][3]);
-										$('#inac').html('Inactivos: '+ msg[tam][4]);
-										$('#aldia').html('Al Dia: '+ msg[tam][5]);
-										$('#moros').html('Morosos: '+ msg[tam][6]);
+										$('#total').html(msg[tam][0]);
+										$('#conect').html(msg[tam][1]);
+										$('#desc').html(msg[tam][2]);
+										$('#activ').html(msg[tam][3]);
+										$('#inac').html(msg[tam][4]);
+										$('#aldia').html(msg[tam][5]);
+										$('#moros').html(msg[tam][6]);
 										for(let i=1; i<msg.length; i++){
 												$('#'+msg[i][1]).children('.card-header').html(' '+msg[i][1]+'&nbsp&nbsp&nbspSaldo: '+msg[i][6].toFixed(1));
 												$('#'+msg[i][1]).children('.card-content').html('Email: '+msg[i][2]+'&nbsp&nbsp&nbspConexion: '+msg[i][4]+'&nbsp&nbsp&nbspEstatus: '+msg[i][5]);
-										};
+										$('#clientes').load(' #clientes')};
 								};
 
 						});
@@ -105,7 +105,7 @@
 
 
 
-				setInterval('rt()', 10000);
+				setInterval('rt()', 3000);
 		</script>
 
 										

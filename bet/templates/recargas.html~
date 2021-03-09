@@ -23,7 +23,7 @@
 
 														<div><label class="label" for="">Numero:<br><input class="input is-primary" type="text"></label></div>
 														<div><label class="label" for="">Monto:<br><input class="input is-primary" type="text"></label></div>
-														<div><label class="label" for="">Referencia:<br><input class="input i-primary" type="text"></label></div>
+														<div><label class="label" for="">Referencia:<br><input class="input is-primary" type="text"></label></div>
 														</div>
 												</form>
 										</div>

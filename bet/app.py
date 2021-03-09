@@ -61,12 +61,13 @@ def log():
                     plantilla = bd.leertodo()
                     if nombre== str(plantilla[0][1]) and password == str(plantilla[0][3]):
                         session['auth'] = 1
+                        flash('Bienvenido')
                         return redirect(url_for('layad', user=nombre))
                     else:
                         session['auth'] = 1
-                        flash("te haz logeado correctamente")
-                        print(nombre)
-                        bd.log(nombre)
+                        #flash("te haz logeado correctamente")
+                        bd.log(str(nombre))
+                        flash('Bienvenido')
                         return redirect(url_for('dash', user=nombre))
                 else:
                     flash("Datos Incorrectos")
@@ -110,12 +111,13 @@ def dash(user):
     if user == plantilla[0][1]:
         return render_template('fail.html', error=fallas['noacces'])
     else:
-        #if session['auth'] == 1 and session['name'] == user:
+        if session['auth'] == 1 and session['name'] == user:
             #enrutado a dashboard
-        flash('Bienvenido')
-        return render_template('dashboard.html', user=user)
-        #else:
-         #return render_template('fail.html', error = fallas['nolog'])
+            #flash('Bienvenido')
+
+            return render_template('dashboard.html', user=user)
+        else:
+            return render_template('fail.html', error = fallas['nolog'])
 
 
 @app.route('/recargas/<user>', methods=['GET', 'POST'])
@@ -142,6 +144,7 @@ def layad(user):
         return render_template('fail.html', error=fallas['noacces'])
     else:
         if session['auth'] == 1 and session['name'] == str(plantilla[0][1]):
+            #flash('Bienvvenido')
 
             return render_template('dashboard1.html', user=user, plantilla=plantilla, cuenta=cuenta)
         else:

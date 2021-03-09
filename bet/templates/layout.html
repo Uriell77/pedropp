@@ -58,11 +58,11 @@
 				</nav>
 				{% with messages = get_flashed_messages() %}
 				{% if messages %}
-				<ul class=flashes>
+				<article class="message is-secondary">
 						{% for message in messages %}
-						<li>{{ message }}</li>
+						<div class="massage-body"><div id="bienvenida">{{ message }} que mierc</div></div>
 						{% endfor %}
-				</ul>
+				</article>
 				{% endif %}
 				{% endwith %}
 
@@ -70,6 +70,14 @@
 				{% block content %}
 				{%endblock%}
 
+				<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+				<!--<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>-->
+				<script>
+						function deli(){
+								$("#bienvenida").delay(5000).html("")
+						};
+						deli();
+				</script>
 
 		</body>
 </html>

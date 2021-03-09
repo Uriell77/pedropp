@@ -84,17 +84,28 @@
 				</nav>
 				{% with messages = get_flashed_messages() %}
 				{% if messages %}
-				<ul class=flashes>
+
+				<article class="notification is-link" style="position:absolute">
+						<!--<div class="notification-body">-->
 						{% for message in messages %}
-						<li>{{ message }}</li>
+						<strong><div id="bienvenida" class="tittle">{{ message }} {{user}}</div></strong>
 						{% endfor %}
-				</ul>
+						<!--</div>-->
+				</article>
 				{% endif %}
 				{% endwith %}
 
 
 				{% block content %}
 				{%endblock%}
+				<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+				<!--<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>-->
+				<script>
+						setTimeout(function(){
+								$('.notification').delay('slow').fadeOut('slow');
+						},5000);
+				</script>
+
 
 
 		</body>
