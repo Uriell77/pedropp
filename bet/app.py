@@ -13,6 +13,8 @@ import bd
 import sqlite3
 import flask_socketio as soc
 import json as j
+import time
+
 
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
@@ -172,6 +174,7 @@ def fail(fail):
 @socket.on('message')#inicio la escucha
 def sockete(msg): #funcion recibe el dato que sera el mensaje
     print(msg)
+    time.sleep(2)
     if msg== 'hola server':
         cuenta = bd.counteo()
         plantilla = bd.leertodo()
@@ -179,7 +182,7 @@ def sockete(msg): #funcion recibe el dato que sera el mensaje
         plantilla = tuple(plantilla)
         socket.send('hola cliente') #envio respuesta
         cuenta = j.dumps(plantilla) #convierto a json
-        #print(cuenta)
+        print(cuenta)
         socket.send(cuenta) #envio
 
 

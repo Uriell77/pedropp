@@ -13,6 +13,8 @@ import bd
 import sqlite3
 import flask_socketio as soc
 import json as j
+import time
+
 
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
@@ -61,11 +63,13 @@ def log():
                     plantilla = bd.leertodo()
                     if nombre== str(plantilla[0][1]) and password == str(plantilla[0][3]):
                         session['auth'] = 1
+                        flash('Bienvenido')
                         return redirect(url_for('layad', user=nombre))
                     else:
                         session['auth'] = 1
                         #flash("te haz logeado correctamente")
                         bd.log(str(nombre))
+                        flash('Bienvenido')
                         return redirect(url_for('dash', user=nombre))
                 else:
                     flash("Datos Incorrectos")
@@ -142,7 +146,7 @@ def layad(user):
         return render_template('fail.html', error=fallas['noacces'])
     else:
         if session['auth'] == 1 and session['name'] == str(plantilla[0][1]):
-            flash('Bienvvenido')
+            #flash('Bienvvenido')
 
             return render_template('dashboard1.html', user=user, plantilla=plantilla, cuenta=cuenta)
         else:
@@ -177,7 +181,7 @@ def sockete(msg): #funcion recibe el dato que sera el mensaje
         plantilla = tuple(plantilla)
         socket.send('hola cliente') #envio respuesta
         cuenta = j.dumps(plantilla) #convierto a json
-        #print(cuenta)
+        print(cuenta)
         socket.send(cuenta) #envio
 
 

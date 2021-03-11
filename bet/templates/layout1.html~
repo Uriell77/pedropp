@@ -9,8 +9,7 @@
 				<link rel="icon" href="{{ url_for('static', filename='img/betmarlogo.jpeg')}}">
 				<link href="{{ url_for('static', filename='css/css/bulma.css')}}" rel="stylesheet" type="text/css">
 				<link href="{{ url_for('static', filename='css/css/ped.css')}}" rel="stylesheet" type="text/css">
-				<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+				<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
 				<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>
 				<script src="{{ url_for('static', filename='js/java.js' )}}"></script>
 
@@ -84,8 +83,6 @@
 				</nav>
 				{% with messages = get_flashed_messages() %}
 				{% if messages %}
-				{% set flag = 0 %}
-				{% if flag == 0 %}
 
 				<article class="notification is-link" style="position:absolute">
 						<!--<div class="notification-body">-->
@@ -95,15 +92,13 @@
 						<!--</div>-->
 				</article>
 				{% endif %}
-				{% endif %}
-				{% set flag = 1%}
 				{% endwith %}
 
 
 				{% block content %}
 				{%endblock%}
 				<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-				<!--<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>-->
+				<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>
 				<script>
 						setTimeout(function(){
 								$('.notification').delay('slow').fadeOut('slow');
