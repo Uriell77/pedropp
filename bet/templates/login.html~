@@ -35,7 +35,7 @@
 
 				var socket = io();
 
-				$("#entrar").click(setTimeout(function(){
+				$("#entrar").click(function(){
 
 						console.log("estoy vivo");
 						socket.send('hola server');
@@ -63,8 +63,7 @@
 						});
 
 
-				}; 2000);
-				);
+				});
 
 
 

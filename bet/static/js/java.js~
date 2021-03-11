@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 		var boton1 =  document.getElementById('boton1');
 		var boton2 =  document.getElementById('boton2');
-		var boton3 =  document.getElementById('boton3')
+		var boton3 =  document.getElementById('boton3');
 		var ventana = document.getElementById('modal1');
 		boton1.onclick = function() {
 			ventana.classList.toggle('is-active');
@@ -51,9 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 		var boton =  document.getElementById('boton');
 		var ventana = document.getElementById('modal1');
-		var close = document.getElementById('del')
-		var back = document.getElementById('modalback')
-		var cancel = document.getElementById('cancel')
+		var close = document.getElementById('del');
+		var back = document.getElementById('modalback');
+		var cancel = document.getElementById('cancel');
 		close.onclick = function() {
 			ventana.classList.toggle('is-active');
 		
@@ -83,7 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-bot = $('#logout');
-$('#logout').click(function(event){
-		console.log('hello')
+document.addEventListener('DOMContentLoaded', () => {
+		var bot = document.getElementsByClassName('button');
+		bot.onclick= function(event){
+			console.log('hello cagalera');
+		};
 });
