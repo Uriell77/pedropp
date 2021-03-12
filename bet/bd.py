@@ -56,6 +56,7 @@ def log(dato):
     datos = tuple(datos)
     #print(datos)
     editar(datos[0], datos)
+    return True
 
 
 def logout(dato):
@@ -68,6 +69,7 @@ def logout(dato):
     datos = tuple(datos)
     #print(datos)
     editar(datos[0], datos)
+    return True
     
     
 def counteo():

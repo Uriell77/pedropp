@@ -120,7 +120,9 @@ def dash(user):
     if user == plantilla[0][1]:
         return render_template('fail.html', error=fallas['noacces'])
     else:
-        if session['auth'] == 1 and session['name'] == user:
+        conect = session['auth']
+        userconec = session['name']
+        if conect == 1 and userconec == user:
             #enrutado a dashboard
             #flash('Bienvenido')
 

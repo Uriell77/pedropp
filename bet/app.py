@@ -121,7 +121,7 @@ def dash(user):
         return render_template('fail.html', error=fallas['noacces'])
     else:
         conect = session['auth']
-        userconec = session['user']
+        userconec = session['name']
         if conect == 1 and userconec == user:
             #enrutado a dashboard
             #flash('Bienvenido')
@@ -165,7 +165,7 @@ def layad(user):
 
 @app.route('/logout')
 def logout():
-    print(session['name'])
+    #print(session['name'])
     bd.logout(session['name'])
     session.clear()
     session['name'] = 'unknown'
