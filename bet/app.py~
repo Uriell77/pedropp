@@ -16,9 +16,10 @@ import json as j
 import time
 
 
+'''configuracion de la app'''
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
-app.config.update(SESSION_COOKIE_SAMESITE="lax")
+app.config.update(SESSION_COOKIE_SAMESITE="lax", secure=True)
 socket = soc.SocketIO(app)
 
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
@@ -161,7 +162,7 @@ def logout():
     session.clear()
     session['name'] = 'unknown'
     session['auth'] = 0
-    cuenta = bd.counteo()
+    #cuenta = bd.counteo()
     return redirect(url_for('hello'))
 
 
