@@ -16,21 +16,25 @@ import json as j
 import time
 
 
-'''configuracion de la app'''
 app = Flask(__name__)
+#configuracion de la app
 app.secret_key="secretoenlamontana"
-#app.config.update(SESSION_COOKIE_SAMESITE="lax")
+app.config.update(SESSION_COOKIE_SAMESITE="lax")
 socket = soc.SocketIO(app)
 
+#diccionario de fallas
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
+
 
 @app.before_request
 def session_manager():
     session.permanent = True
 
 
+''' ruta a la pagina de inicio'''
 @app.route('/')
 def hello():
+    '''ruta a la pagina inicial'''
     #enrutado a pagina inicial
     return render_template('index.html')
 
@@ -41,7 +45,9 @@ def lay():
     return render_template('layout.html')
 
 
-
+'''ruta a la pagina del login
+se validan los campos para el ingreso en caso de ser el admin se enruta a layad,
+si es un usuario se enruta a das'''
 @app.route('/login', methods=['GET', 'POST'])
 def log():
     #enrutado a login
@@ -114,7 +120,9 @@ def dash(user):
     if user == plantilla[0][1]:
         return render_template('fail.html', error=fallas['noacces'])
     else:
-        if session['auth'] == 1 and session['name'] == user:
+        conect = session['auth']
+        userconec = session['user']
+        if conect == 1 and userconec == user:
             #enrutado a dashboard
             #flash('Bienvenido')
 
