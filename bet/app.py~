@@ -174,6 +174,7 @@ def fail(fail):
 @socket.on('message')#inicio la escucha
 def sockete(msg): #funcion recibe el dato que sera el mensaje
     print(msg)
+    time.sleep(2)
     if msg== 'hola server':
         cuenta = bd.counteo()
         plantilla = bd.leertodo()
