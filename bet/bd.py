@@ -45,8 +45,7 @@ def editar(idu, datos):
                 datos[3],
                 datos[4],
                 datos[5],
-                datos[6],
-                idu))
+                datos[6],idu))
     base.commit()
 
 
