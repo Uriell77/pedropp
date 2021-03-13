@@ -30,7 +30,7 @@ def leertodo():
 
 def editar(id, datos):
     print(datos[1])
-    cursor.execute("UPDATE usuarios SET (nombre, correo, password, log, status, saldo) = (?,?,?,?,?,?) WHERE id = ?",datos, id)
+    cursor.execute("UPDATE usuarios SET (nombre, correo, password, log, status, saldo) = (?,?,?,?,?,?) WHERE id = {}".format{id},datos)
     base.commit()
 
 
