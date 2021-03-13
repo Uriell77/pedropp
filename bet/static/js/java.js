@@ -82,10 +82,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-
-document.addEventListener('DOMContentLoaded', () => {
-		var bot = document.getElementsByClassName('button');
-		bot.onclick= function(){
-			console.log('hello cagalera');
-		};
-});

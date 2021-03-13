@@ -17,24 +17,19 @@ import time
 
 
 app = Flask(__name__)
-#configuracion de la app
 app.secret_key="secretoenlamontana"
 app.config.update(SESSION_COOKIE_SAMESITE="lax")
 socket = soc.SocketIO(app)
 
-#diccionario de fallas
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
-
 
 @app.before_request
 def session_manager():
     session.permanent = True
 
 
-''' ruta a la pagina de inicio'''
 @app.route('/')
 def hello():
-    '''ruta a la pagina inicial'''
     #enrutado a pagina inicial
     return render_template('index.html')
 
@@ -45,9 +40,7 @@ def lay():
     return render_template('layout.html')
 
 
-'''ruta a la pagina del login
-se validan los campos para el ingreso en caso de ser el admin se enruta a layad,
-si es un usuario se enruta a das'''
+
 @app.route('/login', methods=['GET', 'POST'])
 def log():
     #enrutado a login
@@ -120,9 +113,7 @@ def dash(user):
     if user == plantilla[0][1]:
         return render_template('fail.html', error=fallas['noacces'])
     else:
-        conect = session['auth']
-        userconec = session['name']
-        if conect == 1 and userconec == user:
+        if session['auth'] == 1 and session['name'] == user:
             #enrutado a dashboard
             #flash('Bienvenido')
 
@@ -165,12 +156,12 @@ def layad(user):
 
 @app.route('/logout')
 def logout():
-    #print(session['name'])
+    print(session['name'])
     bd.logout(session['name'])
     session.clear()
     session['name'] = 'unknown'
     session['auth'] = 0
-    #cuenta = bd.counteo()
+    cuenta = bd.counteo()
     return redirect(url_for('hello'))
 
 
@@ -182,7 +173,6 @@ def fail(fail):
 
 @socket.on('message')#inicio la escucha
 def sockete(msg): #funcion recibe el dato que sera el mensaje
-    print(msg)
     time.sleep(2)
     if msg== 'hola server':
         cuenta = bd.counteo()
@@ -193,6 +183,11 @@ def sockete(msg): #funcion recibe el dato que sera el mensaje
         cuenta = j.dumps(plantilla) #convierto a json
         print(cuenta)
         socket.send(cuenta) #envio
+
+
+@socket.on_error_default(e)
+def error():
+    print("este es el error: " + str(e))
 
 
 if __name__ == '__main__':

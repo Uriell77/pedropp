@@ -39,7 +39,6 @@
 				var socket = io();
 
 				$("#entrar").click(function(){
-
 						console.log("estoy vivo");
 						socket.send('hola server');
 						socket.on('message', function(msg){

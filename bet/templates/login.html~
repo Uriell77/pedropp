@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
 <div class="collumns is-one-third is-centered">
 		<div class="collumn is-half">
 				<!--<h1>ESTO ES UN LOGIN</h1>-->
