@@ -165,7 +165,7 @@ def layad(user):
 
 @app.route('/logout')
 def logout():
-    print(session['name'])
+    #print(session['name'])
     bd.logout(session['name'])
     session.clear()
     session['name'] = 'unknown'

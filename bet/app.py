@@ -26,9 +26,9 @@ socket = soc.SocketIO(app)
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
 
 
-@app.before_request
-def session_manager():
-    session.permanent = True
+#@app.before_request
+#def session_manager():
+    #session.permanent = True
 
 
 ''' ruta a la pagina de inicio'''
