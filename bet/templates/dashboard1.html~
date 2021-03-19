@@ -1,6 +1,7 @@
 {% extends "layout1.html" %}
 
 
+
 {% block content %}
 
 {% set cuenta1 = cuenta[1]  %}
@@ -37,11 +38,11 @@
 
 <!-- tabs-->
 <div class="tabs is-centered">
-  <ul>
-    <li class="is-active"><a>Clientes</a></li>
-    <li><a>ordenes</a></li>
-    <li><a>enconstruccion</a></li>
-    <li><a>enconstruccion</a></li>
+  <ul id="tabs">
+    <li class="tab is-active" onclick="openTab(event, 'clientes')"><a>Clientes</a></li>
+    <li class="tab" onclick="openTab(event, 'recargas')"><a>Recargas</a></li>
+    <li class="tab" onclick="openTab(event, 'netflix')"><a>Netflix</a></li>
+    <li class="tab" onclick="openTab(event, 'administracion')"><a>Administracion</a></li>
   </ul>
 </div>
 
@@ -52,34 +53,69 @@
 
 <div class="columns">
 		<div class="column">
-				<div class="box" style="box-color:40,30%,20%"><strong>Clientes:</strong>
-						<div id=clientes><br>
+
+				<!-- contenido1-->
+				<div id ="clientes"class="box is-active content-tab" style="box-color:40,30%,20% display:block"><strong>Clientes:</strong>
+						<div class="" id="client"><br>
 								{%for i in plantilla[1:]%}
 								<div class="card has-background-dark has-text-light" id='{{ i[1]}}'>
-										<div class="card-header">
-												 {{i[1]}}&nbsp&nbsp&nbspSaldo: {{i[6]}}
+										<div class="card-header has-background-link">
+												 &nbsp{{i[1]}}&nbsp&nbsp&nbspSaldo: {{i[6]}}
 										</div>
 										<div class="card-content">
-												Email: {{i[2]}}&nbsp&nbsp&nbspConexion: {{i[4]}}&nbsp&nbsp&nbspEstatus: {{i[5]}}
+												Email: {{i[2]}}<br>Conexion: {{i[4]}}<br>Estatus: {{i[5]}}
 										</div>
 								</div><br>
 								{%endfor%}
 
 						</div>
-				</div>
+						</div>
+
+
+						<!-- contenido2 -->
+
+				<div id="recargas" class="box content-tab" style="display:none"><br>
+						<strong>Ordenes:</strong>
+						<div class=""></div><br>
+
+						</div>
+
+						<!-- contenido3 -->
+
+				<div id="netflix" class="box content-tab"style="display:none"><br>
+						<strong>Cuentas:</strong>
+						<div></div><br>
+
+						</div>
+
+						
+						<!-- contenido4 -->
+
+				<div id="administracion" class="box content-tab"style="display:none"><br>
+						<strong>Suspensiones:</strong>
+						<div></div><br>
+
+				</div><br>
+
+
+
+
 		</div>
 		</div>
 
+    <audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autoplay="false" ></audio>
 
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>
-		<script>
+
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"> </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"</script>
+
+	<script type="text/javascript">
 				var socket = io();
 
-				//socket.send('hola server');
+				socket.send('hola server');
 				socket.on('message', function(msg){
 						if(msg=='hola cliente'){
-								//console.log(msg);
+								console.log(msg);
 						}
 						else{
 								msg = JSON.parse(msg);
@@ -94,11 +130,69 @@
 								$('#moros').html(msg[tam][6]);
 								for(let i=1; i<msg.length; i++){
 										$('#'+msg[i][1]).children('.card-header').html(' '+msg[i][1]+'&nbsp&nbsp&nbspSaldo: '+msg[i][6].toFixed(1));
-										$('#'+msg[i][1]).children('.card-content').html('Email: '+msg[i][2]+'&nbsp&nbsp&nbspConexion: '+msg[i][4]+'&nbsp&nbsp&nbspEstatus: '+msg[i][5]);
-								$('#clientes').load(' #clientes')};
+										$('#'+msg[i][1]).children('.card-content').html('Email: '+msg[i][2]+'<br>Conexion: '+msg[i][4]+'<br>Estatus: '+msg[i][5])};
+								$('#client').load();
+								//var sound = document.getElementById("audio");
+								//sound.play();
 						};
 
 				});
+$('.card').children().each(function(){
+	if ($(this).text().match("Conectado")){
+			$(this).prev().removeClass('has-background-link');
+			$(this).prev().addClass('has-background-primary');
+			};
+});
+
+
+$('.card').children().each(function(){
+	if ($(this).text().match("Conectado")){
+			$(this).prev().removeClass('has-background-link');
+			$(this).prev().addClass('has-background-primary');
+			};
+});
+
+
+
+
+				$("#logout").click(function(){
+
+						//console.log("estoy vivo");
+						socket.send('hola server');
+						socket.on('message', function(msg){
+								if(msg=='hola cliente'){
+										//console.log(msg);
+								}
+								else{
+										msg = JSON.parse(msg);
+										console.log(msg[1][1]);
+										var tam = msg.length -1;
+										$('#total').html(msg[tam][0]);
+										$('#conect').html(msg[tam][1]);
+										$('#desc').html(msg[tam][2]);
+										$('#activ').html(msg[tam][3]);
+										$('#inac').html(msg[tam][4]);
+										$('#aldia').html(msg[tam][5]);
+										$('#moros').html(msg[tam][6]);
+										for(let i=1; i<msg.length; i++){
+												$('#'+msg[i][1]).children('.card-header').html(' '+msg[i][1]+'&nbsp&nbsp&nbspSaldo: '+msg[i][6].toFixed(1));
+												$('#'+msg[i][1]).children('.card-content').html('Email: '+msg[i][2]+'&nbsp&nbsp&nbspConexion: '+msg[i][4]+'&nbsp&nbsp&nbspEstatus: '+msg[i][5]);
+										$('#client').load();
+
+										};
+						};
+
+				});
+$('.card').children().each(function(){
+	if ($(this).text().match("Conectado")){
+			$(this).prev().removeClass('has-background-link');
+			$(this).prev().addClass('has-background-primary');
+			};
+});
+
+
+
+		});
 
 
 

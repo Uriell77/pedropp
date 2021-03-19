@@ -14,7 +14,9 @@ import sqlite3
 import flask_socketio as soc
 import json as j
 import time
+from gevent import monkey
 
+monkey.patch_all()
 
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
@@ -185,8 +187,8 @@ def sockete(msg): #funcion recibe el dato que sera el mensaje
         socket.send(cuenta) #envio
 
 
-@socket.on_error_default(e)
-def error():
+@socket.on_error_default
+def error(e):
     print("este es el error: " + str(e))
 
 

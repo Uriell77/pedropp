@@ -39,7 +39,6 @@
 				var socket = io();
 
 				$("#entrar").click(function(){
-
 						console.log("estoy vivo");
 						socket.send('hola server');
 						socket.on('message', function(msg){
@@ -64,6 +63,13 @@
 								};
 
 						});
+
+$('.card').children().each(function(){
+	if ($(this).text().match("Conectado")){
+			$(this).prev().removeClass('has-background-link');
+			$(this).prev().addClass('has-background-primary');
+			};
+});
 
 
 				});

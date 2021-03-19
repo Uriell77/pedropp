@@ -14,11 +14,13 @@ import sqlite3
 import flask_socketio as soc
 import json as j
 import time
+from gevent import monkey
 
+monkey.patch_all()
 
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
-app.config.update(SESSION_COOKIE_SAMESITE="lax")
+#app.config.update(SESSION_COOKIE_SAMESITE="lax")
 socket = soc.SocketIO(app)
 
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}
@@ -181,7 +183,7 @@ def sockete(msg): #funcion recibe el dato que sera el mensaje
         plantilla = tuple(plantilla)
         socket.send('hola cliente') #envio respuesta
         cuenta = j.dumps(plantilla) #convierto a json
-        print(cuenta)
+        #print(cuenta)
         socket.send(cuenta) #envio
 
 
