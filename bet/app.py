@@ -20,7 +20,7 @@ monkey.patch_all()
 
 app = Flask(__name__)
 app.secret_key="secretoenlamontana"
-#app.config.update(SESSION_COOKIE_SAMESITE="lax")
+app.config.update(SESSION_COOKIE_SAMESITE="lax")
 socket = soc.SocketIO(app)
 
 fallas = {'nolog':'Usuario no esta Logueado', 'noacces':'Usuario sin acceso a esta area'}

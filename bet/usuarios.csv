@@ -1,0 +1,21 @@
+id,nombre,correo,password,log,status,saldo
+1,admin,administrador@gmail.com,nimda,Desconectado,Inactivo,0.0
+2,Luis,hermoso77@gmail.com,717171,Conectado,inactivo,0.0
+3,Andros,andros@puntocom,andros123,Desconectado,Inactivo,200.0
+4,fry,fry@larson,larson123,Desconectado,Inactivo,0.0
+5,yami,yami@yam.com,yami1,Desconectado,Inactivo,0.0
+6,peter,peter@pan.com,adas,Desconectado,Inactivo,0.0
+7,lotjot,lot@gmail,lote,Desconectado,Inactivo,0.0
+8,ayelet,ayeaye@gail.com,ayel,Conectado,Inactivo,0.0
+9,dfd,fddfdf,sdsdsdsd,Desconectado,Inactivo,0.0
+10,Betmar,bet@gmail.com,bet,Desconectado,Inactivo,0.0
+11,edmundo,edmundo@dantes.com,montecristo,Desconectado,Inactivo,0.0
+12,Sadrack,sad@gmail.com,sad,Desconectado,Inactivo,0.0
+13,surer,surer@gmail.com,rerus,Desconectado,Inactivo,0.0
+14,Cintya,syn@fhjjhggh,chgd,Desconectado,Inactivo,0.0
+15,yusef,adaryusef@gmail.com,yusef,Desconectado,Inactivo,0.0
+16,pdante,pepedante@gmail.com,peda,Desconectado,Inactivo,0.0
+17,loco,loco@gmail.com,locoloco,Desconectado,Inactivo,0.0
+18,Ashton,ash@gracias.com,ashash,Desconectado,Inactivo,0.0
+19,christopher robins,chist@robin.com,christ,Desconectado,Inactivo,0.0
+20,carl grif,carl@gmail.com,carlcarl,Desconectado,Inactivo,0.0
