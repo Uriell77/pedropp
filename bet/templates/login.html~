@@ -64,13 +64,6 @@
 
 						});
 
-$('.card').children().each(function(){
-	if ($(this).text().match("Conectado")){
-			$(this).prev().removeClass('has-background-link');
-			$(this).prev().addClass('has-background-primary');
-			};
-});
-
 
 				});
 

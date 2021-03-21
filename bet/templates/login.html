@@ -36,39 +36,6 @@
 		<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>
 		<script>
 
-				var socket = io();
-
-				$("#entrar").click(function(){
-						console.log("estoy vivo");
-						socket.send('hola server');
-						socket.on('message', function(msg){
-								if(msg=='hola cliente'){
-										//console.log(msg);
-								}
-								else{
-										msg = JSON.parse(msg);
-										console.log(msg[1][1]);
-										var tam = msg.length -1;
-										$('#total').html(msg[tam][0]);
-										$('#conect').html(msg[tam][1]);
-										$('#desc').html(msg[tam][2]);
-										$('#activ').html(msg[tam][3]);
-										$('#inac').html(msg[tam][4]);
-										$('#aldia').html(msg[tam][5]);
-										$('#moros').html(msg[tam][6]);
-										for(let i=1; i<msg.length; i++){
-												$('#'+msg[i][1]).children('.card-header').html(' '+msg[i][1]+'&nbsp&nbsp&nbspSaldo: '+msg[i][6].toFixed(1));
-												$('#'+msg[i][1]).children('.card-content').html('Email: '+msg[i][2]+'&nbsp&nbsp&nbspConexion: '+msg[i][4]+'&nbsp&nbsp&nbspEstatus: '+msg[i][5]);
-										$('#clientes').load(' #clientes')};
-								};
-
-						});
-
-
-				});
-
-
-
-		</script>
+					</script>
 
 		{% endblock %}

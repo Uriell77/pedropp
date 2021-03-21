@@ -175,7 +175,7 @@ def fail(fail):
 
 @socket.on('message')#inicio la escucha
 def sockete(msg): #funcion recibe el dato que sera el mensaje
-    time.sleep(2)
+    print(msg)
     if msg== 'hola server':
         cuenta = bd.counteo()
         plantilla = bd.leertodo()
@@ -183,7 +183,7 @@ def sockete(msg): #funcion recibe el dato que sera el mensaje
         plantilla = tuple(plantilla)
         socket.send('hola cliente') #envio respuesta
         cuenta = j.dumps(plantilla) #convierto a json
-        #print(cuenta)
+        print(cuenta)
         socket.send(cuenta) #envio
 
 

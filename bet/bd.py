@@ -29,7 +29,7 @@ def leertodo():
 
 
 def editar(id, datos):
-    print(datos)
+    #print(datos)
     cursor.execute("""UPDATE usuarios SET nombre ='{0}', correo='{1}', password='{2}', log='{3}', status='{4}', saldo='{5}' WHERE id = '{6}'""".format(datos[1],datos[2],datos[3],datos[4],datos[5],datos[6], id))
     base.commit()
 
@@ -54,8 +54,8 @@ def log(dato):
     datos[4] = 'Conectado'
     #print(datos)
     datos = tuple(datos)
-    print(datos)
-    print(datos[0])
+    #print(datos)
+    #print(datos[0])
     editar(datos[0], datos)
     return True
 

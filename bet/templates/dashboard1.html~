@@ -106,10 +106,17 @@
     <audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autoplay="false" ></audio>
 
 
-	<script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"> </script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"</script>
 
-	<script type="text/javascript">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"</script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/socket.io.js')}}"></script>
+	<script>
+						setTimeout(function(){
+								$('.notification').delay('slow').fadeOut('slow');
+						},5000);
+				</script>
+
+	</script>
+	<script>
 				var socket = io();
 
 				socket.send('hola server');
@@ -137,6 +144,7 @@
 						};
 
 				});
+
 $('.card').children().each(function(){
 	if ($(this).text().match("Conectado")){
 			$(this).prev().removeClass('has-background-link');
@@ -146,9 +154,9 @@ $('.card').children().each(function(){
 
 
 $('.card').children().each(function(){
-	if ($(this).text().match("Conectado")){
-			$(this).prev().removeClass('has-background-link');
-			$(this).prev().addClass('has-background-primary');
+	if ($(this).text().match("Desconectado")){
+			$(this).prev().removeClass('has-background-primary');
+			$(this).prev().addClass('has-background-link');
 			};
 });
 
